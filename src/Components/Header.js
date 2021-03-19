@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     },
     screenNameTxt:{
         fontFamily:fontFamily.regular,
-        fontSize:17,
+        fontSize:20,
         marginHorizontal:20
     },
     mainView: {

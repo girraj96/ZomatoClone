@@ -38,8 +38,7 @@ export default class OtpVerification extends Component {
                         </View>
 
                         <View style={styles.emailButtonView}>
-
-                            <SimpleButton buttonName={"Continue with Email"} buttonColor={colors.white} 
+                           <SimpleButton buttonName={"Continue with Email"} buttonColor={colors.white} 
                             textColor={colors.light_black} isIconVisible={true} iconSource={imagePath.mail_icon} />
                         </View>
                         <View style={styles.facebookGoogleBtnView}>
@@ -48,14 +47,11 @@ export default class OtpVerification extends Component {
                                 textColor={colors.light_black} isIconVisible={true} 
                                 iconSource={imagePath.facebook_icon} />
                             </View>
-
                             <View style={styles.facebookInnerView}>
                                 <SimpleButton buttonName={"Google"} buttonColor={colors.white} 
                                 textColor={colors.light_black} isIconVisible={true} 
                                 iconSource={imagePath.google_icon} />
-
-                            </View>
-                            
+                            </View>      
                         </View>
                     </View>
                 </ImageBackground>

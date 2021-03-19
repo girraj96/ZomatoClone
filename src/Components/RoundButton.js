@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     redArrowTouch:{
         height:70,
         width:70,
-        backgroundColor:colors.white,
+        backgroundColor:colors.light_grey,
         borderRadius:35,
         alignItems:"center",
         justifyContent:"center"

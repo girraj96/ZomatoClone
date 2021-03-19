@@ -35,5 +35,19 @@ export default StyleSheet.create({
     },
     resendOtpView:{
         flexDirection:"row",
+        alignSelf:"center",
+        position:"absolute",
+        bottom:"20%"
+    },
+    resendTxt:{
+        color:colors.light_blue,
+        marginHorizontal:5,
+        fontSize:16
+    },
+    roundBtnView:{
+        position:"absolute",
+        bottom:20,
+        right:20,
+        
     }
 })

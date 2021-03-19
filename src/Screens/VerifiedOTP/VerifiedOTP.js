@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import BorderTxtInput from '../../Components/BorderTxtInput'
 import Header from '../../Components/Header'
+import RoundButton from '../../Components/RoundButton'
 import WrapperContainer from '../../Components/WrapperContainer'
+import navigationStrings from '../../constants/navigationStrings'
 import colors from '../../styles/colors'
 import styles from './style'
 
@@ -11,6 +13,10 @@ export default class VerifiedOTP extends Component {
     _onBackPress=()=>{
         const {navigation}=this.props;
         navigation.goBack();
+    }
+    _onRoundBtnClick=()=>{
+        const {navigation}=this.props;
+        navigation.navigate(navigationStrings.LOGIN);
     }
     render() {
         const {mobileNumber}=this.props.route.params
@@ -31,7 +37,13 @@ export default class VerifiedOTP extends Component {
                 </View>
                 <View style={styles.resendOtpView }>
                 <Text>Didn't receive the code ?</Text>
-                    <Text>Resend now</Text>
+               
+                <TouchableOpacity>
+                <Text style={styles.resendTxt}>Resend now</Text>
+                </TouchableOpacity>
+                </View>
+                <View style={styles.roundBtnView}>
+                <RoundButton _onRoundBtnClick={this._onRoundBtnClick}/>
                 </View>
             </WrapperContainer>
         )

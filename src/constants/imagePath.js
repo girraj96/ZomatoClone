@@ -8,6 +8,7 @@ export default{
     location_icon:require("../assets/images/location.png"),
     search_icon:require("../assets/images/search.png"),
     back_arrow:require("../assets/images/back_arrow.png"),
+    bike_logo_zomato:require("../assets/images/bike_logo_zomato.png"),
 
 
 }
