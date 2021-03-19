@@ -15,7 +15,6 @@ import navigationStrings from '../../constants/navigationStrings';
 import Loader from "../../Components/Loader"
 
 class Login extends Component {
-
   state={
     userEmail:"",
     userPassword:"",
@@ -71,7 +70,6 @@ class Login extends Component {
         }
   }
   _onChangeText=key=> {
-    console.log(key)
     return (value) => {
         this.setState({
             [key]: value,
