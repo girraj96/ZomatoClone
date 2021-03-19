@@ -14,5 +14,6 @@ export default{
     item3:require("../assets/images/item3.png"),
     item4:require("../assets/images/item4.png"),
     item5:require("../assets/images/item5.png"),
+    cart:require("../assets/images/cart.png"),
 
 }

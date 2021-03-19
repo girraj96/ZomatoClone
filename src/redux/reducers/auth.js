@@ -11,6 +11,11 @@ export default function counterReducer(state=initialState, action){
             const userData={...action.payload};
             console.log("in auth reducer=>", userData);
             return{...state,userData}
+
+        case ActionTypes.ADD_CART:
+            const {newAry}={...action.payload}
+            console.log("in reducers =>",newAry);
+            return {}
         
         default:
             {

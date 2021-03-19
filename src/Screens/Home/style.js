@@ -12,7 +12,7 @@ export default StyleSheet.create({
     bannerImg:{
         width:"100%",
         alignSelf:"center",
-        height:200,
+        height:170,
         resizeMode:"cover",
         borderRadius:10
     },
@@ -21,5 +21,6 @@ export default StyleSheet.create({
         height:600,
         alignSelf:"center",
         alignItems:"center",
+        marginVertical:5
     }
 })

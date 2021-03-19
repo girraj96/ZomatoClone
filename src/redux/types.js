@@ -1,3 +1,4 @@
 export default {
-    LOGIN:"LOGIN"
+    LOGIN:"LOGIN",
+    ADD_CART:"ADD_CART",
 }

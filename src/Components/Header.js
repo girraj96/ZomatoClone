@@ -1,12 +1,17 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { connect } from 'react-redux'
 import imagePath from '../constants/imagePath'
 import colors from '../styles/colors'
 import fontFamily from '../styles/fontFamily'
 import { moderateScale, moderateScaleVertical } from '../styles/responsiveSize'
 
-export default function Header(props) {
+
+
+ function Header(props) {
     const { isBackHeaderVisible, isLocationVisible,screenNameTxt,_onBackPress } = props;
+
+    const {userData, newAry, cartCount}=props;
     return (
         <View>
             {isBackHeaderVisible &&
@@ -24,6 +29,10 @@ export default function Header(props) {
                         <Text style={styles.locationTxt}>Sector 21</Text>
                         <Text style={styles.dotsTxt}>.................</Text>
                     </View>
+                    <TouchableOpacity style={styles.cartTouch}>
+                        <Text style={styles.cartCountTxt}>{cartCount}</Text>
+                    <Image source={imagePath.cart} style={styles.cartIcon}/>
+                    </TouchableOpacity>
                 </View>}
 
         </View>
@@ -36,7 +45,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.white,
         flexDirection: "row",
         paddingHorizontal: 15,
-        alignItems:"center"
+        justifyContent:"space-between"
     },
     backButtonImg:{
         height:30,
@@ -72,5 +81,32 @@ const styles = StyleSheet.create({
         height: moderateScaleVertical(40),
         width: moderateScale(40),
         resizeMode: "contain"
+    },
+    cartIcon:{
+        height:55,
+        width:55,
+        resizeMode:"contain",
+     
+    },
+    cartTouch:{
+        position:"absolute",
+        right:15
+    },
+    cartCountTxt:{
+        position:"absolute",
+        right:20,
+        fontFamily:fontFamily.medium,
+        fontSize:20,
+        top:10
     }
 })
+
+const mapStateToProps=state=>{
+    return{
+        userData:state.auth.userData,
+        newAry:state.home.newAry,
+        cartCount:state.home.cartCount
+    }
+}
+
+export default connect(mapStateToProps)(Header)

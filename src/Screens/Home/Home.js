@@ -6,8 +6,14 @@ import SearchBox from '../../Components/SearchBox';
 import TagsFlatlist from '../../Components/TagsFlatlist';
 import WrapperContainer from '../../Components/WrapperContainer';
 import imagePath from '../../constants/imagePath';
+import store from '../../redux/store';
+import types from '../../redux/types';
 import colors from '../../styles/colors';
 import styles from './style';
+
+
+const {dispatch}=store;
+
 
 class Home extends Component {
 
@@ -23,27 +29,39 @@ class Home extends Component {
     foodItemAry:[
       
       {id:1,itemImg:imagePath.item1,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150},
+        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
         {id:2,itemImg:imagePath.item2,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150},
+        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
         {id:3,itemImg:imagePath.item3,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150},
+        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
         {id:4,itemImg:imagePath.item4,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150},
+        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
         {id:5,itemImg:imagePath.item5,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150},
+        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
         {id:6,itemImg:imagePath.item1,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150},
+        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
         {id:7,itemImg:imagePath.item2,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150},
+        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
         {id:8,itemImg:imagePath.item3,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150},
+        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
         {id:9,itemImg:imagePath.item4,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150},
+        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
         {id:10,itemImg:imagePath.item5,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150}
+        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0}
     ],
     banner_img:"https://mir-s3-cdn-cf.behance.net/projects/404/a58360100920621.5f13543704b9f.png",
+    newItemList:[],
+  }
+
+
+  _onItemClick=(id)=>{
+        const {foodItemAry,newItemList}=this.state;
+        let newfoodItemAry=[...foodItemAry];
+        let index=newfoodItemAry.findIndex((item)=>item.id===id)
+        dispatch({
+          type:types.ADD_CART,
+          payload:{newfoodItemAry, index}
+      })
   }
 
     render() {
@@ -62,14 +80,14 @@ class Home extends Component {
               />
             </View>
               <Image source={{uri:banner_img}} style={styles.bannerImg}/>
+
           <View style={styles.itemFlatList}>
             <FlatList
             data={foodItemAry}
             numColumns={2}
             keyExtractor={(item)=>item.id.toString()}
             ItemSeparatorComponent={()=><View style={{height:10}}></View>}
-
-            renderItem={({item})=><FoodItemFlat data={item}/>}
+            renderItem={({item})=><FoodItemFlat data={item} _onItemClick={this._onItemClick}/>}
             showsVerticalScrollIndicator={false}
             />
             
