@@ -2,21 +2,22 @@ import ActionTypes from "../types";
 
 
 const initialState={
-    userData:{  }
+    userData:{  },
+    res:{}
 }
 export default function counterReducer(state=initialState, action){
 
     switch(action.type){
         case ActionTypes.LOGIN:
-            const userData={...action.payload};
-            console.log("in auth reducer=>", userData);
+            const {userData}={...action.payload};
+          
             return{...state,userData}
-
-        case ActionTypes.ADD_CART:
-            const {newAry}={...action.payload}
-            console.log("in reducers =>",newAry);
-            return {}
         
+            case ActionTypes.ISLOGIN:
+                const {res}={...action.payload};
+                return{...state,res}
+            
+
         default:
             {
                return {...state}

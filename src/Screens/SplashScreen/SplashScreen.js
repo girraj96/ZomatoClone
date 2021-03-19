@@ -14,7 +14,7 @@ export default class SplashScreen extends Component {
             <View style={styles.mainView}>
                 <Text style={styles.zomatoTxt}>zomato</Text>
                 <View style={styles.roundBtnView}>
-                    <RoundButton _onRoundBtnClick={()=>navigation.navigate(navigationStrings.HOME)}/>
+                    <RoundButton _onRoundBtnClick={()=>navigation.navigate(navigationStrings.OTP_VERIFICATION)}/>
                 </View>
             </View>
         )

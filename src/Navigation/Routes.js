@@ -3,23 +3,30 @@ import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 import AuthStack from './AuthStack';
 import MainStack from './MainStack';
-import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 
 
 
 const Stack=createStackNavigator();
 
-export default function Routes() {
-    const userData=useSelector(state=>{
-        return (state.auth.userData);
-    })
-    console.log("in userData=>",userData)
+function Routes(props) {
+  
+     const {res}=props;
+     console.log(" in routes=>",res)
     return (
        <NavigationContainer>
            <Stack.Navigator>
-               {AuthStack()}
-               {MainStack()}
+                {res&&<>{MainStack()}</>}
+                {AuthStack()}
            </Stack.Navigator>
        </NavigationContainer>
     )
 }
+
+const mapStateToProps=state=>{
+    return {
+        res: state.auth.res
+    }
+}
+
+export default connect(mapStateToProps)(Routes);

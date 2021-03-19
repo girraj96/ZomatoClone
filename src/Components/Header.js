@@ -9,7 +9,7 @@ import { moderateScale, moderateScaleVertical } from '../styles/responsiveSize'
 
 
  function Header(props) {
-    const { isBackHeaderVisible, isLocationVisible,screenNameTxt,_onBackPress } = props;
+    const { isBackHeaderVisible, isLocationVisible,screenNameTxt,_onBackPress,onCartClick } = props;
 
     const {userData, newAry, cartCount}=props;
     return (
@@ -29,7 +29,7 @@ import { moderateScale, moderateScaleVertical } from '../styles/responsiveSize'
                         <Text style={styles.locationTxt}>Sector 21</Text>
                         <Text style={styles.dotsTxt}>.................</Text>
                     </View>
-                    <TouchableOpacity style={styles.cartTouch}>
+                    <TouchableOpacity style={styles.cartTouch} onPress={onCartClick}>
                         <Text style={styles.cartCountTxt}>{cartCount}</Text>
                     <Image source={imagePath.cart} style={styles.cartIcon}/>
                     </TouchableOpacity>

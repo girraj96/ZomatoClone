@@ -18,6 +18,7 @@ export default function counterReducer(state=initialState, action){
                newfoodItemAry[index].itemCount+=1;
              return {...state,newAry:[...newr],cartCount:state.cartCount+1}
            }
+    
 
         default:
             {
