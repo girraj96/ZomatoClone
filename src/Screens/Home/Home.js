@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { SafeAreaView, StatusBar,Image,Text, View,FlatList } from 'react-native'
+import { SafeAreaView, StatusBar,Image,Text, View,FlatList, ScrollView} from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import FoodItemFlat from '../../Components/FoodItemFlat';
 import Header from '../../Components/Header'
 import SearchBox from '../../Components/SearchBox';
@@ -32,34 +33,30 @@ class Home extends Component {
     foodItemAry:[
       
       {id:1,itemImg:imagePath.item1,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
+       foodType:"Special Kabab",restaurantsName:"Pizza, Fast Food",ratingImg:imagePath.ratings,ratingPoint:"4.2", itemPrice:150,itemCount:0},
         {id:2,itemImg:imagePath.item2,
-        restaurantsName:"Biryani",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
+       foodType:"Biryani",restaurantsName:"Pizza, Fast Food",ratingImg:imagePath.ratings,ratingPoint:"3.7",itemPrice:200,itemCount:0},
         {id:3,itemImg:imagePath.item3,
-        restaurantsName:"Egg Roll",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
+       foodType:"Premium Thali",restaurantsName:"Pizza, Fast Food",ratingImg:imagePath.ratings,ratingPoint:"4.0",itemPrice:100,itemCount:0},
         {id:4,itemImg:imagePath.item4,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
+       foodType:"Domino's Pizza",restaurantsName:"Pizza, Fast Food",ratingImg:imagePath.ratings,ratingPoint:"4.5",itemPrice:50,itemCount:0},
         {id:5,itemImg:imagePath.item5,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
-        {id:6,itemImg:imagePath.item1,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
-        {id:7,itemImg:imagePath.item2,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
-        {id:8,itemImg:imagePath.item3,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
-        {id:9,itemImg:imagePath.item4,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0},
-        {id:10,itemImg:imagePath.item5,
-        restaurantsName:"Domino's Pizza",foodType:"Pizza, Fast Food",itemPrice:150,itemCount:0}
+       foodType:"Chowmein",restaurantsName:"Pizza, Fast Food",ratingImg:imagePath.ratings,ratingPoint:"4.0",itemPrice:350,itemCount:0},
+        {id:6,itemImg:imagePath.item6,
+       foodType:"Kadhayi Panner",restaurantsName:"Pizza, Fast Food",ratingImg:imagePath.ratings,ratingPoint:"4.0",itemPrice:250,itemCount:0},
+        
     ],
     banner_img:"https://mir-s3-cdn-cf.behance.net/projects/404/a58360100920621.5f13543704b9f.png",
   }
-
+  
 
   _onItemClick=(id)=>{
-        const {foodItemAry,newItemList}=this.state;
+
+        const {foodItemAry}=this.state;
         let newfoodItemAry=[...foodItemAry];
-        let index=newfoodItemAry.findIndex((item)=>item.id===id)
+
+        let index=newfoodItemAry.findIndex((item)=>item.id===id);
+
         dispatch({
           type:types.ADD_CART,
           payload:{newfoodItemAry, index}
@@ -69,6 +66,7 @@ class Home extends Component {
     const {navigation}=this.props;
     navigation.navigate(navigationStrings.CART_ITEMS)
   }
+ 
 
     render() {
       const {tagsAry,banner_img,foodItemAry}=this.state;
@@ -76,6 +74,7 @@ class Home extends Component {
           <WrapperContainer bgColor={colors.white} statusBarColor={colors.white} barStyle={"dark-content"}>
               <Header isLocationVisible={true} onCartClick={this.onCartClick}/>
             <View style={styles.searchBoxView}>
+        
             <SearchBox/>
             <View style={styles.tagsFlatlistView}>
               <FlatList
@@ -85,12 +84,7 @@ class Home extends Component {
                 renderItem={({item})=><TagsFlatlist data={item}/>}
               />
             </View>
-
-            <TouchableOpacity onPress={()=>clearUserData()}>
-              <Text style={{fontSize:20, marginVertical:20}}>Logout</Text>
-            </TouchableOpacity>
               <Image source={{uri:banner_img}} style={styles.bannerImg}/>
-
           <View style={styles.itemFlatList}>
             <FlatList
             data={foodItemAry}

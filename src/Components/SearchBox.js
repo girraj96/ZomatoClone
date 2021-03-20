@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         borderWidth:1,
         borderColor:colors.light_grey,
-        width:"100%",
-        paddingHorizontal:10
+        paddingHorizontal:10,
+        marginHorizontal:10
        
     },
     searchIcon:{

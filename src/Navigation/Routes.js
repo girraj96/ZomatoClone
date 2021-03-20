@@ -12,11 +12,12 @@ const Stack=createStackNavigator();
 function Routes(props) {
   
      const {res}=props;
-     console.log(" in routes=>",res)
+
     return (
        <NavigationContainer>
            <Stack.Navigator>
-                {res&&<>{MainStack()}</>}
+                {/* {res&&<>{MainStack()}</>} */}
+                {MainStack()}
                 {AuthStack()}
            </Stack.Navigator>
        </NavigationContainer>

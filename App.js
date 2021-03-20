@@ -13,7 +13,6 @@ const {dispatch}=store;
 export default class App extends Component {
   componentDidMount(){
   getUserData().then((res)=>{
-    console.log(res);
     dispatch({
       type:types.ISLOGIN,
       payload:{res}

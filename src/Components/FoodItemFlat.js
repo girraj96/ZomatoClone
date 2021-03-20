@@ -7,47 +7,69 @@ export default function FoodItemFlat(props) {
     const {data, _onItemClick}=props
     return (
         <View style={styles.flatMainView}>
-            <Image source={data.itemImg} style={styles.imgView} resizeMode="cover"/> 
-            <Text>{data.restaurantsName}</Text>
-            <View style={styles.addButtonView}>
-            <Text style={styles.priceTxt}>₹{data.itemPrice}</Text>
+            <Image source={data.itemImg} style={styles.imgView} resizeMode="cover"/>
+            <Text style={styles.restaurantsNameTxt}>{data.restaurantsName}</Text>
+            <View style={styles.ratingsView}>
+                <Image source={data.ratingImg} style={styles.ratingImg}/>
+                <Text style={styles.ratingsPointTxt}>{data.ratingPoint}</Text>
+            </View>
+            <Text style={styles.foodTypeTxt}>{data.foodType}</Text>
+            <Text style={styles.priceTxt}>₹{data.itemPrice} </Text>
             <TouchableOpacity style={styles.addButton} onPress={()=>_onItemClick(data.id)}>
                 <Text style={styles.addTxt}>Add</Text>
             </TouchableOpacity>
-            </View>
         </View>
     )
 }
 const styles = StyleSheet.create({
     flatMainView:{
         width:"50%",
-      
+        paddingHorizontal:5,
+        marginVertical:10
     },
     imgView:{
-        height:180,
-        width:180,
+        height:160,
+        width:"100%",
     },
     priceTxt:{
         fontFamily:fontFamily.medium,
-        fontSize:16
-    },
-    addButtonView:{
-        flexDirection:"row",
-        justifyContent:"space-between",
+        fontSize:16,
         marginVertical:5
     },
+ 
     addTxt:{
         color:colors.white,
         fontSize:16
     },
     addButton:{
-        height:40,
-        width:80,
-        borderRadius:5,
+        height:35,
+        width:"100%",
+        borderRadius:2,
         backgroundColor:colors.theme_color,
+        marginVertical:5,
         alignItems:"center",
         justifyContent:"center",
-        marginRight:15
+    },
+    restaurantsNameTxt:{
+        fontFamily:fontFamily.bold,
+        fontSize:18,
+    },
+    foodTypeTxt:{
+        fontFamily:fontFamily.regular,
+        fontSize:15
+    },
+    ratingsView:{
+        flexDirection:"row",
+     alignItems:"center"
+    },
+    ratingsPointTxt:{
+        fontFamily:fontFamily.bold, 
+        fontSize:15, 
+        marginHorizontal:5
+    },
+    ratingImg:{
+        height:15,
+        marginLeft:-5
     }
 })
 

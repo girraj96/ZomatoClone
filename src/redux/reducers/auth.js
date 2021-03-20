@@ -3,7 +3,6 @@ import ActionTypes from "../types";
 
 const initialState={
     userData:{  },
-    res:{}
 }
 export default function counterReducer(state=initialState, action){
 

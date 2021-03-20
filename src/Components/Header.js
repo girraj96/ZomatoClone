@@ -9,17 +9,24 @@ import { moderateScale, moderateScaleVertical } from '../styles/responsiveSize'
 
 
  function Header(props) {
-    const { isBackHeaderVisible, isLocationVisible,screenNameTxt,_onBackPress,onCartClick } = props;
+    const { isBackHeaderVisible, isLocationVisible,screenNameTxt,_onBackPress,onCartClick,iscartIconVisible } = props;
 
-    const {userData, newAry, cartCount}=props;
+    const { newAry,cartCount}=props;
+ 
     return (
         <View>
             {isBackHeaderVisible &&
                 <View style={styles.mainViewForScreens}>
-                    <TouchableOpacity onPress={_onBackPress}>
+                   <View style={styles.screenLeft}>
+                   <TouchableOpacity onPress={_onBackPress}>
                     <Image source={imagePath.back_arrow} style={styles.backButtonImg}/>
                     </TouchableOpacity>
                     <Text style={styles.screenNameTxt}>{screenNameTxt}</Text>
+                   </View>
+                {iscartIconVisible&& <View style={styles.isCartVisibleView}>
+                    <Text style={styles.cartCountTxt}>{cartCount}</Text>
+                    <Image source={imagePath.cart} style={styles.cartIcon}/>
+                    </View>}
                 </View>}
 
             {isLocationVisible &&
@@ -38,15 +45,29 @@ import { moderateScale, moderateScaleVertical } from '../styles/responsiveSize'
         </View>
     )
 }
-const styles = StyleSheet.create({
 
+const mapStateToProps=state=>{
+    return{
+        newAry:state.home.newAry,
+        cartCount:state.home.cartCount
+    }
+}
+export default connect(mapStateToProps)(Header)
+
+const styles = StyleSheet.create({
+    screenLeft:{
+        flexDirection: "row",
+
+    },
     mainViewForScreens:{
         height: moderateScaleVertical(50),
         backgroundColor: colors.white,
-        flexDirection: "row",
         paddingHorizontal: 15,
-        justifyContent:"space-between"
+        flexDirection: "row",
+        justifyContent:"space-between",
+        alignItems:"center"
     },
+    
     backButtonImg:{
         height:30,
         width:25,
@@ -98,15 +119,10 @@ const styles = StyleSheet.create({
         fontFamily:fontFamily.medium,
         fontSize:20,
         top:10
+    },
+    isCartVisibleView:{
+        position:"absolute",
+        right:15
     }
 })
 
-const mapStateToProps=state=>{
-    return{
-        userData:state.auth.userData,
-        newAry:state.home.newAry,
-        cartCount:state.home.cartCount
-    }
-}
-
-export default connect(mapStateToProps)(Header)
