@@ -63,13 +63,34 @@ class Home extends Component {
     navigation.navigate(navigationStrings.CART_ITEMS)
   }
 
-  _onProductClick=()=>{
-    alert("hh")
+  _onProductClick=(id)=>{
+    const { foodItemAry} = this.state;
+    const { navigation } = this.props;
+    let newFoodItemAry = [...foodItemAry];
+    let itemIndex = newFoodItemAry.findIndex((item) => item.id === id); 
+    navigation.navigate(navigationStrings.PRODUCT_DETAILS,{clickedItem:newFoodItemAry[itemIndex] });
+
   }
 
-  _onLogout=()=>{
-    actions.onLogout();
+
+  componentDidMount(){
+    this.focusListener=this.props.navigation.addListener('focus',
+    ()=>{
+      if(this.props.route.params){
+        let newItemadded=this.props.route.params.clickedItemId
+            this._onItemClick(newItemadded);
+            this.props.route.params=null;
+      }
+    }
+    )
   }
+  componentWillUnmount(){
+    if(this.focusListener){
+      this.focusListener();
+    } 
+  }
+
+ 
 
     render() {
       const {tagsAry,banner_img,foodItemAry}=this.state;
@@ -79,11 +100,7 @@ class Home extends Component {
             <View style={styles.searchBoxView}>
         
             <SearchBox/>
-            <TouchableOpacity onPress={this._onLogout}>
-              <Text style={{fontSize:18}}>
-                Logout
-              </Text>
-            </TouchableOpacity>
+
             <View style={styles.tagsFlatlistView}>
               <FlatList
                 data={tagsAry}

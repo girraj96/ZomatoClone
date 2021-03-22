@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Text, TouchableOpacity, View,Image } from 'react-native'
 import RoundButton from '../../Components/RoundButton';
-import imagePath from '../../constants/imagePath';
 import navigationStrings from '../../constants/navigationStrings';
 import styles from "./style";
 

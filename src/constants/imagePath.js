@@ -25,6 +25,8 @@ export default{
     donate:require('../assets/images/donate.png'),
     account:require('../assets/images/account.png'),
     delete:require('../assets/images/delete.png'),
+    logout:require('../assets/images/logout.png'),
+
 
 
 

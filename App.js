@@ -11,6 +11,7 @@ import { getUserData } from './src/utils/utils';
 const {dispatch}=store;
 
 export default class App extends Component {
+  
   componentDidMount(){
   getUserData().then((res)=>{
    if(res){

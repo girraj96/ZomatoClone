@@ -17,7 +17,6 @@ export function login(data = {}) {
               payload:res.data
           })
       })
-
       resolve(res);
     }).catch(error => {
       reject(error);

@@ -9,7 +9,8 @@ import { moderateScale, moderateScaleVertical } from '../styles/responsiveSize'
 
 
  function Header(props) {
-    const { isBackHeaderVisible, isLocationVisible,screenNameTxt,_onBackPress,onCartClick,iscartIconVisible } = props;
+    const { isBackHeaderVisible, isLocationVisible,screenNameTxt,_onBackPress,onCartClick,
+        iscartIconVisible,isLogoutVisible, _onLogout} = props;
 
     const { newAry}=props;
  
@@ -28,6 +29,10 @@ import { moderateScale, moderateScaleVertical } from '../styles/responsiveSize'
                     <Image source={imagePath.cart} style={styles.cartIcon}/>
                     </View>}
                 </View>}
+                {isLogoutVisible&&
+                    <TouchableOpacity onPress={_onLogout} style={{position:"absolute", right:10, bottom:5}}>
+                        <Image source={imagePath.logout} style={{height:40,width:40}}/>
+                    </TouchableOpacity>}
 
             {isLocationVisible &&
                 <View style={styles.mainView}>

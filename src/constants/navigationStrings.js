@@ -7,5 +7,6 @@ export default{
     VERIFIED_OTP:"verifiedOTP",
     CART_ITEMS:"cartItems",
     MY_ACCOUNT:"myAccount",
-    TAB_ROUTES:"tabRoutes"
+    TAB_ROUTES:"tabRoutes",
+    PRODUCT_DETAILS:"productDetails"
 }

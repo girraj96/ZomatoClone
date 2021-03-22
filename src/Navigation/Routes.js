@@ -12,13 +12,11 @@ const Stack=createStackNavigator();
 function Routes(props) {
   
      const {isLoggedin, userData}=props;
-     console.log("in routes=> ", userData)
 
     return (
        <NavigationContainer>
            <Stack.Navigator>
                 {isLoggedin?<>{MainStack()}</>:<>{AuthStack()}</>}
-               
            </Stack.Navigator>
        </NavigationContainer>
     )
