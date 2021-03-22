@@ -11,7 +11,7 @@ import { moderateScale, moderateScaleVertical } from '../styles/responsiveSize'
  function Header(props) {
     const { isBackHeaderVisible, isLocationVisible,screenNameTxt,_onBackPress,onCartClick,iscartIconVisible } = props;
 
-    const { newAry,cartCount}=props;
+    const { newAry}=props;
  
     return (
         <View>
@@ -24,7 +24,7 @@ import { moderateScale, moderateScaleVertical } from '../styles/responsiveSize'
                     <Text style={styles.screenNameTxt}>{screenNameTxt}</Text>
                    </View>
                 {iscartIconVisible&& <View style={styles.isCartVisibleView}>
-                    <Text style={styles.cartCountTxt}>{cartCount}</Text>
+                    <Text style={styles.cartCountTxt}>{newAry.length}</Text>
                     <Image source={imagePath.cart} style={styles.cartIcon}/>
                     </View>}
                 </View>}
@@ -37,7 +37,7 @@ import { moderateScale, moderateScaleVertical } from '../styles/responsiveSize'
                         <Text style={styles.dotsTxt}>.................</Text>
                     </View>
                     <TouchableOpacity style={styles.cartTouch} onPress={onCartClick}>
-                        <Text style={styles.cartCountTxt}>{cartCount}</Text>
+                        <Text style={styles.cartCountTxt}>{newAry.length}</Text>
                     <Image source={imagePath.cart} style={styles.cartIcon}/>
                     </TouchableOpacity>
                 </View>}
@@ -49,7 +49,6 @@ import { moderateScale, moderateScaleVertical } from '../styles/responsiveSize'
 const mapStateToProps=state=>{
     return{
         newAry:state.home.newAry,
-        cartCount:state.home.cartCount
     }
 }
 export default connect(mapStateToProps)(Header)

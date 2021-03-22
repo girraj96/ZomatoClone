@@ -11,14 +11,14 @@ const Stack=createStackNavigator();
 
 function Routes(props) {
   
-     const {res}=props;
+     const {isLoggedin, userData}=props;
+     console.log("in routes=> ", userData)
 
     return (
        <NavigationContainer>
            <Stack.Navigator>
-                {/* {res&&<>{MainStack()}</>} */}
-                {MainStack()}
-                {AuthStack()}
+                {isLoggedin?<>{MainStack()}</>:<>{AuthStack()}</>}
+               
            </Stack.Navigator>
        </NavigationContainer>
     )
@@ -26,7 +26,8 @@ function Routes(props) {
 
 const mapStateToProps=state=>{
     return {
-        res: state.auth.res
+        isLoggedin: state.auth.isLoggedin,
+        userData:state.auth.userData,
     }
 }
 

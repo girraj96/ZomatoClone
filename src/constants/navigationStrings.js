@@ -6,4 +6,6 @@ export default{
     SPLASH_SCREEN:"splash_screen",
     VERIFIED_OTP:"verifiedOTP",
     CART_ITEMS:"cartItems",
+    MY_ACCOUNT:"myAccount",
+    TAB_ROUTES:"tabRoutes"
 }

@@ -4,10 +4,12 @@ import fontFamily from '../styles/fontFamily';
 import colors from "../styles/colors"
 
 export default function FoodItemFlat(props) {
-    const {data, _onItemClick}=props
+    const {data, _onItemClick, _onProductClick}=props
     return (
         <View style={styles.flatMainView}>
+            <TouchableOpacity onPress={()=>_onProductClick(data.id)}>
             <Image source={data.itemImg} style={styles.imgView} resizeMode="cover"/>
+            </TouchableOpacity>
             <Text style={styles.restaurantsNameTxt}>{data.restaurantsName}</Text>
             <View style={styles.ratingsView}>
                 <Image source={data.ratingImg} style={styles.ratingImg}/>

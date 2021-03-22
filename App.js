@@ -13,11 +13,15 @@ const {dispatch}=store;
 export default class App extends Component {
   componentDidMount(){
   getUserData().then((res)=>{
+   if(res){
     dispatch({
       type:types.ISLOGIN,
       payload:{res}
     })
+   }
   }) 
+
+  
 }
 
   render() {

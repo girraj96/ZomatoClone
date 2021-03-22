@@ -1,4 +1,4 @@
-import { apiDelete, apiGet, apiPost, apiPut, getItem, setItem, setUserData } from '../../utils/utils';
+import { apiDelete, apiGet, apiPost, apiPut, clearUserData, getItem, setItem, setUserData } from '../../utils/utils';
 import { LOGIN, SIGNUP, } from '../../config/urls';
 import types from '../types';
 import store from '../store';
@@ -24,10 +24,17 @@ export function login(data = {}) {
     })
   })
 
+}
 
+export const onLogout=()=>{
+      dispatch({
+      type:types.ON_LOGOUT,
+    })
+  
 }
 
 export function signup(data = {}) {
   return apiPost(SIGNUP, data);
 }
+
 

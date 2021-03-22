@@ -5,3 +5,4 @@ export {default as OtpVerification} from "./OtpVerification/OtpVerification";
 export {default as VerifiedOTP} from "./VerifiedOTP/VerifiedOTP";
 export {default as SplashScreen} from "./SplashScreen/SplashScreen";
 export {default as CartItems} from "./CartItems/CartItems";
+export {default as MyAccount} from "./MyAccount/MyAccount";

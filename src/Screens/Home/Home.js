@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { SafeAreaView, StatusBar,Image,Text, View,FlatList, ScrollView} from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { connect } from 'react-redux';
 import FoodItemFlat from '../../Components/FoodItemFlat';
 import Header from '../../Components/Header'
 import SearchBox from '../../Components/SearchBox';
@@ -14,6 +15,7 @@ import types from '../../redux/types';
 import colors from '../../styles/colors';
 import { clearUserData } from '../../utils/utils';
 import styles from './style';
+import actions from "../../redux/actions";
 
 
 const {dispatch}=store;
@@ -51,22 +53,23 @@ class Home extends Component {
   
 
   _onItemClick=(id)=>{
-
         const {foodItemAry}=this.state;
         let newfoodItemAry=[...foodItemAry];
-
         let index=newfoodItemAry.findIndex((item)=>item.id===id);
-
-        dispatch({
-          type:types.ADD_CART,
-          payload:{newfoodItemAry, index}
-      })
+        actions.onItemClickAction(newfoodItemAry, index);
   }
   onCartClick=()=>{
     const {navigation}=this.props;
     navigation.navigate(navigationStrings.CART_ITEMS)
   }
- 
+
+  _onProductClick=()=>{
+    alert("hh")
+  }
+
+  _onLogout=()=>{
+    actions.onLogout();
+  }
 
     render() {
       const {tagsAry,banner_img,foodItemAry}=this.state;
@@ -76,6 +79,11 @@ class Home extends Component {
             <View style={styles.searchBoxView}>
         
             <SearchBox/>
+            <TouchableOpacity onPress={this._onLogout}>
+              <Text style={{fontSize:18}}>
+                Logout
+              </Text>
+            </TouchableOpacity>
             <View style={styles.tagsFlatlistView}>
               <FlatList
                 data={tagsAry}
@@ -91,7 +99,7 @@ class Home extends Component {
             numColumns={2}
             keyExtractor={(item)=>item.id.toString()}
             ItemSeparatorComponent={()=><View style={{height:10}}></View>}
-            renderItem={({item})=><FoodItemFlat data={item} _onItemClick={this._onItemClick}/>}
+            renderItem={({item})=><FoodItemFlat data={item} _onItemClick={this._onItemClick} _onProductClick={this._onProductClick}/>}
             showsVerticalScrollIndicator={false}
             />
             
@@ -101,5 +109,6 @@ class Home extends Component {
         )
     }
 }
+
 
 export default Home;

@@ -8,7 +8,7 @@ import WrapperContainer from '../../Components/WrapperContainer';
 import imagePath from '../../constants/imagePath';
 import colors from '../../styles/colors';
 import styles from './style';
-import apis from "../../redux/actions"
+import actions from "../../redux/actions"
 import { showMessage } from 'react-native-flash-message';
 import validator from "../../utils/validations"
 import navigationStrings from '../../constants/navigationStrings';
@@ -51,9 +51,8 @@ class Login extends Component {
                 isLoading: true
             })
 
-            apis.login({email: userEmail, password: userPassword})
+            actions.login({email: userEmail, password: userPassword})
                 .then(response => {
-                  navigation.navigate(navigationStrings.HOME);
                     showMessage({
                         type: "success",
                         icon: "success",

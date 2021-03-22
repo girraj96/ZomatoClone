@@ -17,6 +17,15 @@ export default{
     item6:require("../assets/images/item6.png"),
     cart:require("../assets/images/cart.png"),
     ratings:require("../assets/images/ratings.png"),
+    promo_img:require("../assets/images/promo_img.png"),
+    empty_cart:require('../assets/images/cart_empty.png'),
+    bag:require('../assets/images/bag.png'),
+    go_out:require('../assets/images/go_out.png'),
+    pro:require('../assets/images/pro.png'),
+    donate:require('../assets/images/donate.png'),
+    account:require('../assets/images/account.png'),
+    delete:require('../assets/images/delete.png'),
+
 
 
 }
