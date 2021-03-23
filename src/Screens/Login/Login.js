@@ -53,6 +53,7 @@ class Login extends Component {
 
             actions.login({email: userEmail, password: userPassword})
                 .then(response => {
+  
                     showMessage({
                         type: "success",
                         icon: "success",

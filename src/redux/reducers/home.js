@@ -3,7 +3,7 @@ import ActionTypes from "../types";
 
 const initialState = {
     newAry: [],
-    total_price: 0
+    total_price: 0,
 }
 
 const commonFunction = (productAry) => {
@@ -19,10 +19,10 @@ export default function counterReducer(state = initialState, action) {
     switch (action.type) {
         case ActionTypes.ADD_CART:
 
-            const { newfoodItemAry, index } = action.payload;
-            if (!state.newAry.includes(newfoodItemAry[index])) {
-                newfoodItemAry[index].itemCount += 1;
-                let newr = [...state.newAry, newfoodItemAry[index]];
+            const { newfoodItemAry } = action.payload;
+            if (!state.newAry.includes(newfoodItemAry)) {
+                newfoodItemAry.itemCount += 1;
+                let newr = [...state.newAry, newfoodItemAry];
                 return { ...state, newAry: [...newr] }
             }
 
@@ -35,11 +35,14 @@ export default function counterReducer(state = initialState, action) {
                 return {...state};
             }
         case ActionTypes.ADD_ITEM_COUNT:
+
             const { add_id } = action.payload;
             let newAddItemsAry = [...state.newAry]
             let itemIndex = newAddItemsAry.findIndex((item) => item.id === add_id);
             newAddItemsAry[itemIndex].itemCount += 1;
+
             let newAddTotal = commonFunction(newAddItemsAry);
+            
             return {
                 ...state, newAry: [...newAddItemsAry], total_price: newAddTotal
             }

@@ -52,11 +52,8 @@ class Home extends Component {
   }
   
 
-  _onItemClick=(id)=>{
-        const {foodItemAry}=this.state;
-        let newfoodItemAry=[...foodItemAry];
-        let index=newfoodItemAry.findIndex((item)=>item.id===id);
-        actions.onItemClickAction(newfoodItemAry, index);
+  _onItemClick=(data)=>{
+        actions.onItemClickAction(data);
   }
   onCartClick=()=>{
     const {navigation}=this.props;

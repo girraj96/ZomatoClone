@@ -13,6 +13,7 @@ export default class MyAccount extends Component {
     render() {
         return (
               <WrapperContainer>
+
                   <Header isBackHeaderVisible={true} screenNameTxt="My Account" isLogoutVisible={true} _onLogout={this._onLogout}/>
               </WrapperContainer>
         )

@@ -8,28 +8,28 @@ import { SplashScreen } from './src/Screens';
 import { getUserData } from './src/utils/utils';
 
 
-const {dispatch}=store;
+const { dispatch } = store;
 
 export default class App extends Component {
-  
-  componentDidMount(){
-  getUserData().then((res)=>{
-   if(res){
-    dispatch({
-      type:types.ISLOGIN,
-      payload:{res}
-    })
-   }
-  }) 
 
-  
-}
+  componentDidMount() {
+    getUserData().then((res) => {
+      if (res) {
+        dispatch({
+          type: types.ISLOGIN,
+          payload: { res }
+        })
+      }
+    })
+
+
+  }
 
   render() {
     return (
       <>
-      <Provider store={store}>
-        <Routes />
+        <Provider store={store}>
+          <Routes />
         </Provider>
         <FlashMessage position="top" />
       </>

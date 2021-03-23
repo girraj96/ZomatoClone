@@ -8,7 +8,7 @@ export default function SimpleButton(props) {
     const {buttonName, buttonColor, textColor,isIconVisible,iconSource,_onSimpleBtn}=props
     return (
        <TouchableOpacity style={{
-        height:moderateScaleVertical(50),
+        height:50,
         alignItems:"center",
         justifyContent:"center",
         backgroundColor:buttonColor,

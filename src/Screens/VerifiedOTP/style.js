@@ -49,5 +49,12 @@ export default StyleSheet.create({
         bottom:20,
         right:20,
         
-    }
+    },
+
+
+    
+
+    textInputContainer: {
+        marginBottom: 20,
+      },
 })

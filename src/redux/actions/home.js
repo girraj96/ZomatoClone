@@ -3,10 +3,10 @@ import ActionTypes from "../types"
 
 const {dispatch}=store;
 
-export const onItemClickAction =(newfoodItemAry, index)=>{
+export const onItemClickAction =(newfoodItemAry)=>{
     dispatch ({
         type:ActionTypes.ADD_CART,
-        payload:{newfoodItemAry, index}
+        payload:{newfoodItemAry}
     })
 }
 

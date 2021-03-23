@@ -4,9 +4,10 @@ import colors from '../styles/colors'
 import { moderateScaleVertical } from '../styles/responsiveSize';
 
 export default function BorderTxtInput(props) {
-    const {placeholder,inputType, maxLength}=props;
+    const {placeholder,inputType, maxLength, _onChangeTxt}=props;
     return (
-        <TextInput style={styles.txtInput} placeholder={placeholder} keyboardType={inputType} maxLength={maxLength}/>
+        <TextInput onChangeText={_onChangeTxt}
+         style={styles.txtInput} placeholder={placeholder} keyboardType={inputType} maxLength={maxLength}/>
     )
 }
 const styles = StyleSheet.create({

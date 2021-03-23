@@ -1,11 +1,13 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { connect } from 'react-redux';
 import imagePath from '../constants/imagePath';
 import colors from '../styles/colors';
 import fontFamily from '../styles/fontFamily';
 
-export default function CartAddedItems(props) {
-    const { data, _onSubButton, _onAddButton,_onDelete, } = props;
+ function CartAddedItems(props) {
+    const { data, _onSubButton, _onAddButton,_onDelete,particular_item_price } = props;
+    let particularItemTotalPrice=data.itemPrice*data.itemCount
     return (
         <View style={{ marginVertical: 10, paddingHorizontal: 10 }}>
             <View style={styles.productView}>
@@ -34,7 +36,7 @@ export default function CartAddedItems(props) {
                                   </Text>
                             </TouchableOpacity>
                         </View>
-
+                        <Text style={styles.itemTotalPriceTxt}>₹{particularItemTotalPrice}</Text>
                         <TouchableOpacity onPress={()=>_onDelete(data.id)}>
                             <Image source={imagePath.delete} style={styles.deleteIcon} />
                         </TouchableOpacity>
@@ -45,6 +47,11 @@ export default function CartAddedItems(props) {
         </View>
     )
 }
+
+
+
+export default CartAddedItems
+
 const styles = StyleSheet.create({
     productView: {
         flexDirection: 'row',
@@ -76,7 +83,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         marginHorizontal:5,
-        alignSelf:"flex-start"
+        alignItems:"flex-end",
     },
     itemAddSub: {
         height:30,
@@ -103,6 +110,12 @@ const styles = StyleSheet.create({
         height: 20,
         width: 20,
         resizeMode:"contain",
-        marginVertical:10
+        marginVertical:10,
+        alignSelf:"flex-end"
+    },
+    itemTotalPriceTxt:{
+        fontFamily:fontFamily.regular,
+        fontSize:16,
+        marginTop:5
     }
 })

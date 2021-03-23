@@ -17,7 +17,7 @@ export default function FoodItemFlat(props) {
             </View>
             <Text style={styles.foodTypeTxt}>{data.foodType}</Text>
             <Text style={styles.priceTxt}>₹{data.itemPrice} </Text>
-            <TouchableOpacity style={styles.addButton} onPress={()=>_onItemClick(data.id)}>
+            <TouchableOpacity style={styles.addButton} onPress={()=>_onItemClick(data)}>
                 <Text style={styles.addTxt}>Add</Text>
             </TouchableOpacity>
         </View>
