@@ -16,18 +16,20 @@ export function login(data = {}) {
           type: types.LOGIN,
           payload: res.data
         })
+        
       })
       resolve(res);
+
     }).catch(error => {
       reject(error);
     })
   })
-
 }
 
 export function onSendOTP(data = {}) {
   return new Promise((resolve, reject) => {
     apiPost(SEND_OTP, data).then(res => {
+
       resolve(res);
     }).catch(error => {
       reject(error);
@@ -40,6 +42,15 @@ export function otpVerify(data = {}) {
 
   return new Promise((resolve, reject) => {
     apiPost(OTP_VERIFY, data).then(res => {
+      setUserData(res.data).then(suc => {
+        dispatch({
+          type: types.LOGIN,
+          payload: res.data
+        })
+        
+      })
+    
+
       resolve(res);
     }).catch(error => {
       reject(error);

@@ -3,10 +3,12 @@ import { Text, View } from 'react-native'
 import Header from '../../Components/Header'
 import WrapperContainer from '../../Components/WrapperContainer'
 import actions from "../../redux/actions"
+import { clearUserData } from '../../utils/utils'
 
 export default class MyAccount extends Component {
 
     _onLogout=()=>{
+        clearUserData();
         actions.onLogout();
       }
 

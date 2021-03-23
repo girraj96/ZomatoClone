@@ -16,7 +16,7 @@ function Routes(props) {
     return (
        <NavigationContainer>
            <Stack.Navigator>
-                {isLoggedin?<>{MainStack()}</>:<>{AuthStack()}</>}
+                {!!userData.accessToken?<>{MainStack()}</>:<>{AuthStack()}</>}
            </Stack.Navigator>
        </NavigationContainer>
     )

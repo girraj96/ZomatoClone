@@ -1,5 +1,5 @@
 import { clearUserData } from "../../utils/utils";
-import ActionTypes from "../types";
+import types from "../types";
 
 
 const initialState={
@@ -10,16 +10,15 @@ export default function counterReducer(state=initialState, action){
 
     switch(action.type){
         
-        case ActionTypes.LOGIN:
-            const {userData}={...action.payload};
+        case types.LOGIN:
+            const userData={...action.payload};
             return{...state,userData, isLoggedin:true}
         
-            case ActionTypes.ISLOGIN:
-                const {res}=action.payload;
-                return{...state,isLoggedin:true, userData:{...res}}
+            // case types.ISLOGIN:
+            //     const {res}=action.payload;
+            //     return{...state,isLoggedin:true, userData:{...res}}
 
-            case ActionTypes.ON_LOGOUT:
-                clearUserData();
+            case types.ON_LOGOUT:
                 return{...state,isLoggedin:false,userData:{}}
         default:
             {

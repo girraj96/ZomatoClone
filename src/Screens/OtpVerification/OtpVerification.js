@@ -23,10 +23,8 @@ export default class OtpVerification extends Component {
         })
     }
     _onSendOtp = () => {
-
         const {userMobileNumber} = this.state;
         const {navigation} = this.props;
-
         this.setState({
           isLoading: true,
         });
@@ -36,7 +34,6 @@ export default class OtpVerification extends Component {
                 countryCode:'+91',
                 countryCodeISO:"IN"
               }
-           
             })
             .then(res => {
               this.setState({
